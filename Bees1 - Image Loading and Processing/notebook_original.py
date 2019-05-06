@@ -13,7 +13,7 @@
 #     name: python3
 # ---
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "3"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "3"}, "cell_type": "markdown"}
 # # ## 1. Import Python libraries
 # # <p><img src="https://s3.amazonaws.com/assets.datacamp.com/production/project_374/img/honey.jpg" alt="honey bee">
 # # <em>A honey bee.</em></p>
@@ -34,19 +34,18 @@ from IPython.display import display
 import pandas as pd
 
 # import numpy to use in this cell
-import numpy as np
+# ... YOUR CODE FOR TASK 1 ...
 
 # import Image from PIL so we can use it later
-from PIL import Image
+# ... YOUR CODE FOR TASK 1 ...
 
 # generate test_data
-test_data = np.random.beta(a=1, b=1, size=(100, 100, 3))
-
+# ... YOUR CODE FOR TASK 1 ...
 
 # display the test_data
-plt.imshow(test_data)
+# ... YOUR CODE FOR TASK 1 ...
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "10"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "10"}, "cell_type": "markdown"}
 # # ## 2. Opening images with PIL
 # # <p>Now that we have all of our imports ready, it is time to work with some real images.</p>
 # # <p>Pillow is a very flexible image loading and manipulation library. It works with many different image formats, for example, <code>.png</code>, <code>.jpg</code>, <code>.gif</code> and more. For most image data, one can work with images using the Pillow library (which is imported as <code>PIL</code>).</p>
@@ -54,17 +53,17 @@ plt.imshow(test_data)
 
 # + {"tags": ["sample_code"], "dc": {"key": "10"}}
 # open the image
-img = Image.open("datasets/bee_1.jpg")
+img = ...
 
 # Get the image size
-img_size = img.size
+img_size = ...
 
 print("The image size is: {}".format(img_size))
 
 # Just having the image as the last line in the cell will display it in the notebook
 img
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "17"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "17"}, "cell_type": "markdown"}
 # # ## 3. Image manipulation with PIL
 # # <p>Pillow has a number of common image manipulation tasks built into the library. For example, one may want to resize an image so that the file size is smaller. Or, perhaps, convert an image to black-and-white instead of color. Operations that Pillow provides include:</p>
 # # <ul>
@@ -79,18 +78,18 @@ img
 
 # + {"tags": ["sample_code"], "dc": {"key": "17"}}
 # Crop the image to 25, 25, 75, 75
-img_cropped = img.crop(box=(25, 25, 75, 75))
+img_cropped = ...
 display(img_cropped)
 
 # rotate the image by 45 degrees
-img_rotated = img.rotate(angle=45)
+img_rotated = ...
 display(img_rotated)
 
 # flip the image left to right
-img_flipped = img.transpose(method=Image.FLIP_LEFT_RIGHT)
+img_flipped = ...
 display(img_flipped)
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "24"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "24"}, "cell_type": "markdown"}
 # # ## 4. Images as arrays of data
 # # <p>What is an image? So far, PIL has handled loading images and displaying them. However, if we're going to use images as data, we need to understand what that data looks like.</p>
 # # <p>Most image formats have three color <a href="https://en.wikipedia.org/wiki/RGB_color_model">"channels": red, green, and blue</a> (some images also have a fourth channel called "alpha" that controls transparency). For each pixel in an image, there is a value for every channel.</p>
@@ -99,31 +98,31 @@ display(img_flipped)
 
 # + {"tags": ["sample_code"], "dc": {"key": "24"}}
 # Turn our image object into a NumPy array
-img_data = np.array(img)
+img_data = ...
 
 # get the shape of the resulting array
-img_data_shape = img_data.shape
+img_data_shape = ...
 
 print("Our NumPy array has the shape: {}".format(img_data_shape))
 
 # plot the data with `imshow` 
-plt.imshow(img_data)
+# ... YOUR CODE FOR TASK 4 ...
 plt.show()
 
 # plot the red channel
-plt.imshow(img_data[:,:,0], cmap=plt.cm.Reds_r)
+plt.imshow(..., cmap=plt.cm.Reds_r)
 plt.show()
 
 # plot the green channel
-plt.imshow(img_data[:,:,1], cmap=plt.cm.Greens_r)
+plt.imshow(..., cmap=plt.cm.Greens_r)
 plt.show()
 
-# # plot the blue channel
-plt.imshow(img_data[:,:,2], cmap=plt.cm.Blues_r)
+# plot the blue channel
+plt.imshow(..., cmap=plt.cm.Blues_r)
 plt.show()
 
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "31"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "31"}, "cell_type": "markdown"}
 # # ## 5. Explore the color channels
 # # <p>Color channels can help provide more information about an image. A picture of the ocean will be more blue, whereas a picture of a field will be more green. This kind of information can be useful when building models or examining the differences between images.</p>
 # # <p>We'll look at the <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density estimate</a> for each of the color channels on the same plot so that we can understand how they differ.</p>
@@ -140,54 +139,54 @@ def plot_kde(channel, color):
     return pd.Series(data).plot.density(c=color)
 
 # create the list of channels
-channels = ['r', 'g', 'b']
+channels = ...
     
 def plot_rgb(image_data):
     # use enumerate to loop over colors and indexes
     for ix, color in enumerate(channels):
-        plot_kde(image_data[:, :, ix], color)
+        # ... YOUR CODE FOR TASK 5 ...
 
     plt.show()
     
 plot_rgb(img_data)
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "38"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "38"}, "cell_type": "markdown"}
 # # ## 6. Honey bees and bumble bees (i)
 # # <p>Now we'll look at two different images and some of the differences between them. The first image is of a honey bee, and the second image is of a bumble bee.</p>
 # # <p>First, let's look at the honey bee.</p>
 
 # + {"tags": ["sample_code"], "dc": {"key": "38"}}
 # load bee_12.jpg as honey
-honey = Image.open('datasets/bee_12.jpg')
+# ... YOUR CODE FOR TASK 6 ...
 
 # display the honey bee image
-display(honey)
+display(...)
 
 # NumPy array of the honey bee image data
-honey_data = np.array(honey)
+# ... YOUR CODE FOR TASK 6 ...
 
 # plot the rgb densities for the honey bee image
-plot_rgb(honey_data)
+plot_rgb(...)
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "45"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "45"}, "cell_type": "markdown"}
 # # ## 7. Honey bees and bumble bees (ii)
 # # <p>Now let's look at the bumble bee.</p>
 # # <p>When one compares these images, it is clear how different the colors are. The honey bee image above, with a blue flower, has a strong peak on the right-hand side of the blue channel. The bumble bee image, which has a lot of yellow for the bee and the background, has almost perfect overlap between the red and green channels (which together make yellow).</p>
 
 # + {"tags": ["sample_code"], "dc": {"key": "45"}}
 # load bee_3.jpg as bumble
-bumble = Image.open('datasets/bee_3.jpg')
+# ... YOUR CODE FOR TASK 7 ...
 
 # display the bumble bee image
-display(bumble)
+display(...)
 
 # NumPy array of the bumble bee image data
-bumble_data = np.array(bumble)
+# ... YOUR CODE FOR TASK 7 ...
 
 # plot the rgb densities for the bumble bee image
-plot_rgb(bumble_data)
+plot_rgb(...)
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "52"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "52"}, "cell_type": "markdown"}
 # # ## 8. Simplify, simplify, simplify
 # # <p>While sometimes color information is useful, other times it can be distracting. In this examples where we are looking at bees, the bees themselves are very similar colors. On the other hand, the bees are often on top of different color flowers. We know that the colors of the flowers may be distracting from separating honey bees from bumble bees, so let's convert these images to <a href="https://en.wikipedia.org/wiki/Grayscale">black-and-white, or "grayscale."</a></p>
 # # <p>Grayscale is just one of the <a href="https://pillow.readthedocs.io/en/5.0.0/handbook/concepts.html#modes">modes that Pillow supports</a>. Switching between modes is done with the <code>.convert()</code> method, which is passed a string for the new mode.</p>
@@ -195,51 +194,51 @@ plot_rgb(bumble_data)
 
 # + {"tags": ["sample_code"], "dc": {"key": "52"}}
 # convert honey to grayscale
-honey_bw = honey.convert(mode="L")
+honey_bw = ...
 display(honey_bw)
 
 # convert the image to a NumPy array
-honey_bw_arr = np.array(honey_bw)
+honey_bw_arr = ...
 
 # get the shape of the resulting array
-honey_bw_arr_shape = honey_bw_arr.shape
+honey_bw_arr_shape = ...
 print("Our NumPy array has the shape: {}".format(honey_bw_arr_shape))
 
 # plot the array using matplotlib
-plt.imshow(honey_bw_arr, cmap=plt.cm.gray)
+plt.imshow(..., cmap=plt.cm.gray)
 plt.show()
 
 # plot the kde of the new black and white array
 plot_kde(honey_bw_arr, 'k')
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "59"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "59"}, "cell_type": "markdown"}
 # # ## 9. Save your work!
 # # <p>We've been talking this whole time about making changes to images and the manipulations that might be useful as part of a machine learning pipeline. To use these images in the future, we'll have to save our work after we've made changes.</p>
 # # <p>Now, we'll make a couple changes to the <code>Image</code> object from Pillow and save that. We'll flip the image left-to-right, just as we did with the color version. Then, we'll change the NumPy version of the data by clipping it. Using the <code>np.maximum</code> function, we can take any number in the array smaller than <code>100</code> and replace it with <code>100</code>. Because this reduces the range of values, it will increase the <a href="https://en.wikipedia.org/wiki/Contrast_(vision)">contrast of the image</a>. We'll then convert that back to an <code>Image</code> and save the result.</p>
 
 # + {"tags": ["sample_code"], "dc": {"key": "59"}}
 # flip the image left-right with transpose
-honey_bw_flip = honey_bw.transpose(method=Image.FLIP_LEFT_RIGHT)
+# ... YOUR CODE FOR TASK 9 ...
 
 # show the flipped image
 display(honey_bw_flip)
 
 # save the flipped image
-honey_bw_flip.save("saved_images/bw_flipped.jpg")
+# ... YOUR CODE FOR TASK 9 ...
 
 # create higher contrast by reducing range
-honey_hc_arr = np.maximum(honey_bw_arr, 100)
+# ... YOUR CODE FOR TASK 9 ...
 
 # show the higher contrast version
 plt.imshow(honey_hc_arr, cmap=plt.cm.gray)
 
 # convert the NumPy array of high contrast to an Image
-honey_bw_hc = Image.fromarray(honey_hc_arr)
+# ... YOUR CODE FOR TASK 9 ...
 
 # save the high contrast version
-honey_bw_hc.save("saved_images/bw_hc.jpg")
+# ... YOUR CODE FOR TASK 9 ...
 
-# + {"run_control": {"frozen": true}, "tags": ["context"], "deletable": false, "dc": {"key": "66"}, "editable": false, "cell_type": "markdown"}
+# + {"tags": ["context"], "deletable": false, "editable": false, "run_control": {"frozen": true}, "dc": {"key": "66"}, "cell_type": "markdown"}
 # # ## 10. Make a pipeline
 # # <p>Now it's time to create an image processing pipeline. We have all the tools in our toolbox to load images, transform them, and save the results.</p>
 # # <p>In this pipeline we will do the following:</p>
@@ -261,12 +260,12 @@ def process_image(path):
     rcz_path = "saved_images/rcz_{}.jpg".format(path.stem)
 
     print("Creating grayscale version of {} and saving to {}.".format(path, bw_path))
-    bw = img.convert(mode="L")
-    bw.save(bw_path)
+    bw = ...
+    # ... YOUR CODE FOR TASK 10 ...
 
     print("Creating rotated, cropped, and zoomed version of {} and saving to {}.".format(path, rcz_path))
-    rcz = img.rotate(45).crop(box=(25, 25, 75, 75)).resize((100, 100))
-    rcz.save(rcz_path)
+    rcz = ...
+    # ... YOUR CODE FOR TASK 10 ...
 
 # for loop over image paths
 for img_path in image_paths:
