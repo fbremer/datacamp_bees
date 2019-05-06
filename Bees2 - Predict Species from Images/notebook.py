@@ -225,7 +225,7 @@ pd.Series(y_train).value_counts()
 
 # + {"dc": {"key": "59"}, "tags": ["sample_code"]}
 # define support vector classifier
-svm = SVC(probability=True, random_state=42)
+svm = SVC(kernel='linear', probability=True, random_state=42)
 
 # fit model
 svm.fit(X_train, y_train)
